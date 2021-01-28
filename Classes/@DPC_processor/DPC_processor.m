@@ -105,6 +105,7 @@ function load_image(obj,fullfilename,index,~)
         obj.IDPC = zeros(obj.dim(1),obj.dim(2));
     end
     obj.IDPC(:,:,index) = single(I);
+    %icy_imshow(I,num2str(index));
 end
 %-------------------------------------------------------------------------%
 function setCoordinates(obj,~,~)
@@ -149,6 +150,7 @@ function genSource_no_aberration_correction(obj,~,~)
             mask(obj.Fy<=(obj.Fx*tand(obj.illu_rotation(k)))) = 1;    
         end
         obj.source(:,:,k) = S0.*mask;
+        %icy_imshow(fftshift(S0.*mask),[num2str(k) ' ' num2str(obj.na_inner(k))]);
     end
 end
 %-------------------------------------------------------------------------%
